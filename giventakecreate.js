@@ -23,6 +23,13 @@ $("#submit").on("click", function (event){
  console.log(user)
 });
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    console.log(user);
+    // User is signed in.consoleelse {
+    // No user is signed in.
+  }
+});
 
 var fname = document.getElementById("fname");
 var lname = document.getElementById("lname");
