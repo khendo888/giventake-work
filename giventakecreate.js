@@ -13,6 +13,16 @@ var provider = new firebase.auth.GoogleAuthProvider();
 provider.addScope('profile');
 provider.addScope('email');
 
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+
+    // APPEND TO DOM USER's INFO
+    console.log(user);
+    // User is signed in.console
+  }else {
+    // No user is signed in.
+  }
+});
 $("#submit").on("click", function (event){
 	event.preventDefault();
 	firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -23,13 +33,7 @@ $("#submit").on("click", function (event){
  console.log(user)
 });
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    console.log(user);
-    // User is signed in.consoleelse {
-    // No user is signed in.
-  }
-});
+
 
 var fname = document.getElementById("fname");
 var lname = document.getElementById("lname");
